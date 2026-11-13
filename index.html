@@ -1577,7 +1577,7 @@ function renderS3() {
 
 function playSentence() {
   const q = s3.qs[s3.i];
-  if (!q) return;
+  if (!q || currentScreen() !== "sec3") return;
   const btn = $("s3play");
   unlockAudio();
   const b64 = SENT_AUDIO[q.id];
