@@ -33,6 +33,9 @@ h1{font:800 clamp(2.6rem,8vw,5rem)/.98 var(--display);letter-spacing:-.035em;mar
 .menuIcon svg{width:28px;height:28px;display:block}
 .menuTitle{font:800 1.1rem/1.22 var(--display);letter-spacing:-.01em}
 .menuSub{font-size:.92rem;color:var(--muted)}
+.menuAr{display:block;width:100%;margin-top:3px;padding-top:9px;border-top:1px dashed var(--line);text-align:right}
+.menuArTitle{display:block;font:800 .95rem/1.35 "Segoe UI",Tahoma,"Noto Naskh Arabic",system-ui,sans-serif;color:var(--ink);letter-spacing:0}
+.menuArGoal{display:block;margin-top:3px;font:600 .8rem/1.55 "Segoe UI",Tahoma,"Noto Naskh Arabic",system-ui,sans-serif;color:var(--muted);letter-spacing:0}
 .menuTag{position:absolute;top:15px;right:14px;padding:5px 8px;border-radius:999px;background:color-mix(in srgb,var(--c) 15%,#fff);color:#14213D;font:700 .68rem/1 var(--display);letter-spacing:.04em}
 .scorebar{display:flex;align-items:center;gap:12px;max-width:420px;padding:8px 8px 8px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}
 .scorebar span{color:var(--muted);font-size:.9rem}
@@ -103,6 +106,9 @@ h1{font:800 clamp(2.6rem,8vw,5rem)/.98 var(--display);letter-spacing:-.035em;mar
   .menuTitle{font-size:.97rem;line-height:1.24}
   .menuSub{font-size:.79rem;line-height:1.35}
   .menuTag{display:none}
+  .menuAr{margin-top:0;padding-top:0;border-top:0}
+  .menuArTitle{font-size:.88rem}
+  .menuArGoal{font-size:.75rem;line-height:1.5;margin-top:1px}
   .scorebar{max-width:none;padding:6px 6px 6px 12px}
   .secStage{grid-template-columns:1fr;border-radius:20px}
   .secArt{min-height:0;padding:8px}
@@ -132,14 +138,23 @@ h1{font:800 clamp(2.6rem,8vw,5rem)/.98 var(--display);letter-spacing:-.035em;mar
   #menu h1{font-size:clamp(1.8rem,7.2vw,2.3rem)}
   #menu .lede{font-size:.98rem}
   .menuGrid{grid-template-columns:1fr;gap:9px}
-  .menuCard{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto;
+  .menuCard{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:auto auto auto;
     column-gap:12px;row-gap:1px;align-items:center;padding:11px 12px 14px;border-radius:16px}
   .menuIcon{grid-column:1;grid-row:1/span 2}
   .menuTitle{grid-column:2;grid-row:1;font-size:1rem}
   .menuSub{grid-column:2;grid-row:2;font-size:.8rem}
+  .menuAr{grid-column:1/-1;grid-row:3;margin-top:5px}
 }
 @media(max-width:760px) and (max-height:700px){
-  .menuGrid{margin:12px 0 8px}
+  #menu .note{display:none}
+  #menu .lede{display:none}
+  #menu h1{margin-bottom:8px}
+  body[data-screen="menu"] .top{padding-bottom:12px}
+  .menuGrid{margin:8px 0 4px}
+  .menuCard{padding:9px 11px 11px}
+  #menu .menuSub{display:none}
+  .menuAr{margin-top:0}
+  .menuArGoal{font-size:.72rem;line-height:1.45}
   .secArt svg.scene{max-height:30vh}
   .secAsk h2{font-size:1.03rem}
   .secAsk .hint{font-size:.84rem}
@@ -166,6 +181,14 @@ h1{font:800 clamp(2.6rem,8vw,5rem)/.98 var(--display);letter-spacing:-.035em;mar
 }
 /* very short phones (e.g. 320x568) */
 @media(max-width:760px) and (max-height:600px){
+  body[data-screen="menu"] .top{padding-bottom:6px}
+  #menu h1{font-size:1.5rem}
+  #menu .menuGrid{gap:5px;margin:6px 0 3px}
+  #menu .menuCard{padding:8px 10px 10px}
+  .menuArTitle{font-size:.79rem;line-height:1.3}
+  .menuArGoal{font-size:.7rem;line-height:1.4}
+  .scorebar{padding:5px 5px 5px 12px}
+  .scorebar .ghost{min-height:36px}
   .listenWrap{padding:8px 10px;gap:8px;border-radius:14px}
   .listenWrap .hint{display:none}
   .playBtn{width:46px;height:46px}
@@ -193,24 +216,28 @@ h1{font:800 clamp(2.6rem,8vw,5rem)/.98 var(--display);letter-spacing:-.035em;mar
     <span class="menuIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.6C10.7 5.6 9.1 5 7.3 5H4v13.5h3.3c1.8 0 3.4.6 4.7 1.6 1.3-1 2.9-1.6 4.7-1.6H20V5h-3.3c-1.8 0-3.4.6-4.7 1.6z"/><path d="M12 6.6v13.5"/></svg></span>
     <span class="menuTitle">Vocabulary &amp; Yes/No Questions</span>
     <span class="menuSub">Is there a sofa? Are there two chairs?</span>
+    <span class="menuAr" dir="rtl" lang="ar"><span class="menuArTitle">المفردات وأسئلة نعم/لا</span><span class="menuArGoal">الهدف: تعلّم أسماء الأثاث والإجابة بنعم أو لا.</span></span>
   </button>
   <button class="menuCard" type="button" data-go="sec2" style="--c:#0E9384;--on:#fff">
     <span class="menuTag">4 choices</span>
     <span class="menuIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.6 12 3.6l8 4v8.8l-8 4-8-4z"/><path d="M4 7.6 12 11.6l8-4M12 11.6v8.8"/><path d="M9.4 8.3h5.2"/></svg></span>
     <span class="menuTitle">Prepositions of Place</span>
     <span class="menuSub">Where is it? Pick the right phrase.</span>
+    <span class="menuAr" dir="rtl" lang="ar"><span class="menuArTitle">حروف المكان</span><span class="menuArGoal">الهدف: تحديد مكان الأشياء في الغرفة.</span></span>
   </button>
   <button class="menuCard" type="button" data-go="sec3" style="--c:#E8466B;--on:#fff">
     <span class="menuTag">Audio</span>
     <span class="menuIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9a5 5 0 1 1 10 0c0 2.2-1 3.3-2 4.3-.8.8-1.3 1.5-1.3 2.5A2.7 2.7 0 0 1 11 18.5"/><path d="M10 9a2 2 0 0 1 4 0c0 1.1-.6 1.7-1.2 2.2"/></svg></span>
     <span class="menuTitle">Adjectives &amp; Listening</span>
     <span class="menuSub">Listen and choose the sentence you heard.</span>
+    <span class="menuAr" dir="rtl" lang="ar"><span class="menuArTitle">الصفات والاستماع</span><span class="menuArGoal">الهدف: تمييز الصفات وفهم الجملة المسموعة.</span></span>
   </button>
   <button class="menuCard" type="button" data-go="home" style="--c:#F4B400;--on:#14213D">
     <span class="menuTag">Extra</span>
     <span class="menuIcon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></svg></span>
     <span class="menuTitle">Word practice</span>
     <span class="menuSub">Pictures, spelling, memory — all 74 words.</span>
+    <span class="menuAr" dir="rtl" lang="ar"><span class="menuArTitle">تدريب الكلمات</span><span class="menuArGoal">الهدف: مراجعة الكلمات بالصور والتهجئة والذاكرة.</span></span>
   </button>
 </div>
 <p class="note">Everything works offline once the page has loaded. Three new skills plus the original word quizzes.</p>
@@ -1423,6 +1450,7 @@ function addResult(ok) { secScore.t++; if (ok) secScore.c++; saveScore(); paintS
 const SCREEN_IDS = ["menu", "home", "quiz", "result", "sec1", "sec2", "sec3", "secend"];
 function setScreen(id) {
   SCREEN_IDS.forEach(s => { const el = document.getElementById(s); if (el) el.classList.toggle("hidden", s !== id); });
+  document.body.dataset.screen = id || "";
   const playing = id === "quiz" || id === "sec1" || id === "sec2" || id === "sec3";
   document.body.classList.toggle("playing", playing);
   if (id !== "home" && id !== "quiz" && id !== "result") {

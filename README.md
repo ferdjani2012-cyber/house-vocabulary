@@ -21,6 +21,9 @@ The game opens on a menu with four skills:
 4. **Word practice** — the original word quizzes: 74 words in 4 sets, with picture → word,
    listen → picture, spelling and memory rounds, in Standard or Challenge mode.
 
+Each card also shows the Arabic name of the skill and a one-line Arabic goal
+(*الهدف: …*), so an Arabic-speaking student can see at a glance which section to choose.
+
 A single score is kept across the three skill sections and saved in the browser (`localStorage`),
 so it survives a page reload. It can be reset from the menu.
 
